@@ -1,0 +1,8 @@
+How to play game
+
+1. When you select game2, Colorline, from main menu in main.py
+2. Game2.py will run automatically
+3. In this game, player mush have 2 persons
+4. First person choose number of rows(1 to 6) that want to drop your own chip, take turns to each other
+5. If chips of one player have ordered by four in both of horizontal and vertical as well as aslant line, get wins
+6. When get the winner, it shows result
