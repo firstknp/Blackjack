@@ -1,0 +1,11 @@
+How to play game
+
+1. When you select game1, Hangman, from main menu in main.py
+2. Game3.py will run automatically
+3. First, the program will appear a hangman picture and asks you to guess a letter
+4. All of words in game be generated from words.txt 
+5. If you make a right guess, it will pop up in progress line, while showing in incorrect guesses and 
+   a hangman picture also have progressive if get a wrong guess
+6. The maximun trying is six times. If you lose the game, it have an answer
+7. If you prefer to play agian, the program allow you to do so
+8. If not, it will turn back to main menu
