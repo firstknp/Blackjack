@@ -100,9 +100,11 @@ class Game():
     def status(self):
         if len(self.incorrect) >= Game.MAX_GUESSES:
             self.gameover = True
+            # self.win = 'lose'
             return "\nYou lose. The word was %r." % self.word
         if set(self.correct) == set(self.word):
             self.gameover = True
+            # self.win = 'win'
             return "\nYou won!"
         return "" 
 
@@ -126,6 +128,12 @@ class Game():
             play_again = input("Play again? (y/n): ").lower()
             if "n" in play_again:
                 keepGoing = False
+
+    # def get_win_game3(self):
+    #     if self.win == "win":
+    #         return "win"
+    #     elif self.win == "lose":
+    #         return "lose"
 
 def valid_guess(game):
     while True:
