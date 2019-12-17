@@ -68,6 +68,8 @@ class ColorLine:
         if self.board[0][0] != "-" and self.board[0][1] != "-" and self.board[0][2] != "-" and self.board[0][3] != "-" and self.board[0][4] != "-" and self.board[0][5] != "-":
             return True
         
+
+
 board = [
 ['-', '-', '-', '-', '-', '-'], 
 ['-', '-', '-', '-', '-', '-'], 

@@ -114,14 +114,22 @@ class Rungame:
             print("Computer hand", computer_hand_value)
             if player_hand_value > computer_hand_value:
                 print("You wins")
+                # self.win = "win"
             else:
                 print("Computer wins")
-           
+                # self.win = "lose"           
+
 
     def playerOver(self):
         return self.player_hand.calculate() > 21 
     def computerOver(self):
         return self.computer_hand.calculate() > 21 
+    
+    # def get_win_game1(self):
+    #     if self.win == "win":
+    #         return "win"
+    #     elif self.win == "lose":
+    #         return "lose"
 
 
 if __name__ == "__main__":
