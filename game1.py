@@ -1,7 +1,7 @@
 import random
 
 Cardvalue = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J" ,"Q", "K"]
-Suittype = ["Hearts", "Diamonds", "Spades", "Clubs"]
+Suittype = ["♡", "♢", "♧", "♤"]
 
 class Cards:
     def __init__(self, value, suit):
@@ -65,54 +65,54 @@ class Hand:
         if self.computer:
             print(self.card[0])
             print("hidden")
+            print("")
         else:
             for Cards in self.card:
                 print(Cards)
-        # elif self.computer:
-        #     # self.card = hiddencard.pop()
-        #     print(self.card[0])
-        #     print("hidden")
-        # elif self.player:
-        #     print(self.card[0])
-        #     print(self.card[0])
-        # else:
-        #     for Cards in self.card:
-        #         print(Cards)
 
 class Rungame:
     def __init__(self):
         pass
     def play(self):
         playing = True
-        while playing:
-            self.deck = Deck()
-            self.deck.shuffle()
-            self.player_hand = Hand(player=True)
-            self.computer_hand = Hand(computer=True)
-            for i in range(2):
-                self.player_hand.add(self.deck.deal())
-                self.computer_hand.add(self.deck.deal())
+        self.deck = Deck()
+        self.deck.shuffle()
 
+        self.player_hand = Hand(player=True)
+        self.computer_hand = Hand(computer=True)
+
+        for i in range(2):
+            self.player_hand.add(self.deck.deal())
+            self.computer_hand.add(self.deck.deal())
+
+
+        print("Your hand: ")
+        self.player_hand.display()
+        print("Computer hand: ")
+        self.computer_hand.display()
+        choice = input("Hit/Stick: ")
+        if choice == "Hit":
             print("Your hand: ")
+            self.player_hand.add(self.deck.deal())
             self.player_hand.display()
-            print("Computer hand: ")
-            self.computer_hand.display()
-            choice = input("Hit/Stick: ")
-            if choice == "Hit":
-                self.player_hand.add(self.deck.deal())
-                self.player_hand.display()
-                if self.playerOver():
-                    print("Computer wins")
-                elif self.computerOver():
-                    print("Player wins")
+
+        if self.playerOver():
+            print("Computer wins")
+        else:
+            player_hand_value = self.player_hand.get_value()
+            computer_hand_value = self.computer_hand.get_value()
+            print("Your hand", player_hand_value)
+            print("Computer hand", computer_hand_value)
+            if player_hand_value > computer_hand_value:
+                print("You wins")
             else:
-                player_hand_value = self.player_hand.get_value()
-                computer_hand_value = self.computer_hand.get_value()
+                print("Computer wins")
+           
 
     def playerOver(self):
-        return self.player_hand.get_value() > 21 or (21-self.player_hand.get_value()) < (21-self.computer_hand.get_value())
+        return self.player_hand.get_value() > 21 
     def computerOver(self):
-        return self.computer_hand.get_value() > 21 or (21-self.player_hand.get_value()) > (21-self.computer_hand.get_value())
+        return self.computer_hand.get_value() > 21 
 
 
 
