@@ -124,7 +124,6 @@ class Rungame:
         return self.computer_hand.calculate() > 21 
 
 
-
 if __name__ == "__main__":
     game = Rungame()
     game.play()
