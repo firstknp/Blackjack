@@ -37,37 +37,40 @@ class Hand:
     def __init__(self, computer=False, player=False):
          self.computer = computer
          self.player = player
-         self.card = []
+         self.cards = []
          self.value = 0
+         self.count = 1
     def add(self, card):
-        self.card.append(card)
-    def calculate(self):
+        self.cards.append(card)        
+    def calculate(self): 
         self.value = 0
-        ace = "A"
+        # ace = "A"
         acevalue = False
-        for card in self.card:
+        for card in self.cards:
             if card.value.isnumeric():
                 self.value += int(card.value)
-            elif self.value > 21 and ace > 1:
-                acevalue -= 1
-                self.value -= 10
             else:
                 if self.value == "A":
                     acevalue = True
                     self.value += 11
                 else:
-                    self.value += 10
-    def get_value(self):
-        self.calculate
+                    self.value += 10   
+        if acevalue and self.value >21:
+            self.value -= 10   
         return self.value
     def display(self):
         # hiddencard = deck(hidden = True)
         if self.computer:
-            print(self.card[0])
-            print("hidden")
-            print("")
+            self.count += 1
+            if self.count % 2 == 0:
+                print(self.cards[0])
+                self.cards.pop(1)
+                print("")
+            else:
+                for Cards in self.cards:
+                    print(Cards)           
         else:
-            for Cards in self.card:
+            for Cards in self.cards:
                 print(Cards)
 
 class Rungame:
@@ -95,12 +98,18 @@ class Rungame:
             print("Your hand: ")
             self.player_hand.add(self.deck.deal())
             self.player_hand.display()
-
-        if self.playerOver():
-            print("Computer wins")
-        else:
-            player_hand_value = self.player_hand.get_value()
-            computer_hand_value = self.computer_hand.get_value()
+            print("Computer hand: ")
+            self.computer_hand.add(self.deck.deal())
+            self.computer_hand.display()
+            player_hand_value = self.player_hand.calculate()
+            computer_hand_value = self.computer_hand.calculate()
+            if player_hand_value > computer_hand_value:
+                print("You wins")
+            else:
+                print("Computer wins")
+        elif choice == "Stick":                      
+            player_hand_value = self.player_hand.calculate()
+            computer_hand_value = self.computer_hand.calculate()
             print("Your hand", player_hand_value)
             print("Computer hand", computer_hand_value)
             if player_hand_value > computer_hand_value:
@@ -110,9 +119,9 @@ class Rungame:
            
 
     def playerOver(self):
-        return self.player_hand.get_value() > 21 
+        return self.player_hand.calculate() > 21 
     def computerOver(self):
-        return self.computer_hand.get_value() > 21 
+        return self.computer_hand.calculate() > 21 
 
 
 
