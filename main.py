@@ -1,4 +1,6 @@
 from game1 import *
+from game3 import *
+
 import sys
 
 menu = input("Enter your status (admin/player): ")
@@ -18,9 +20,19 @@ elif menu == 'player':
     while True:
         print("")
         print("Select your choice")
-        selection = int(input("1. Play Blackjack \n2. Play Colorline \n3. Play Roshambo \n4. See your profile \n5. Stop playing\n"))
-        if selection == 1:
-            print (f"Welcome {name}")
+        selection = int(input("1. Play Blackjack \n2. Play Colorline \n3. Play Hangman \n4. See your profile \n5. Stop playing\n"))
+        print (f"Welcome {name}")
+        if selection == 1:         
             game = Rungame()
             game.play()
+        # elif selection == 4:
+        #     game1_price = 20
+        #     game2_price = 10
+        #     game3_price = 15
+        #     print(f"{name}: Balance = ")
+        elif selection == 3:
+            game = Game()
+            game.play()
+        elif selection == 5:
+            sys.exit
 
