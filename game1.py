@@ -10,7 +10,7 @@ class Cards:
         assert suit in Suittype
         self.suit = suit
     def __repr__(self):
-        return self.value + "of" + self.suit
+        return self.value + self.suit
     def ace(self):
         return self.value == "A"
     def acevalue(self):
@@ -34,7 +34,7 @@ class Deck:
             return self.card.pop(0)
  
 class Hand:
-    def __init__(self, computer):
+    def __init__(self, computer=False):
          self.computer = computer
          self.card = []
          self.value = 0
@@ -64,11 +64,47 @@ class Hand:
         if Cards in self.card:
             print(Cards)
         elif self.computer:
-            print("hidden")
             # self.card = hiddencard.pop()
             print(self.card[1])
+            print("hidden")
         # else:
         #     for Cards in self.card:
         #         print(Cards)
 
+class Rungame:
+    def __init__(self):
+        pass
+    def play(self):
+        # playing = True
+        # while playing:
+            self.deck = Deck()
+            self.deck.shuffle()
+            self.player_hand = Hand()
+            self.computer_hand = Hand(computer=True)
+            for i in range(2):
+                self.player_hand.add(self.deck.deal())
+                self.computer_hand.add(self.deck.deal())
 
+            print("Your hand: ")
+            self.player_hand.display()
+            print("Computer hand: ")
+            self.computer_hand.display()
+            choice = input("Hit/Stick: ")
+            if choice == "Hit":
+                self.player_hand.add(self.deck.deal())
+                self.player_hand.display()
+                if self.playerOver():
+                    print("Computer wins")
+            else:
+                player_hand_value = self.player_hand.get_value()
+                computer_hand_value = self.computer_hand.get_value()
+
+    def playerOver(self):
+        return self.player_hand.get_value > 21
+
+
+
+if __name__ == "__main__":
+    game = Rungame()
+    game.play()
+            
