@@ -34,8 +34,9 @@ class Deck:
             return self.card.pop(0)
  
 class Hand:
-    def __init__(self, computer=False):
+    def __init__(self, computer=False, player=False):
          self.computer = computer
+         self.player = player
          self.card = []
          self.value = 0
     def add(self, card):
@@ -61,12 +62,19 @@ class Hand:
         return self.value
     def display(self):
         # hiddencard = deck(hidden = True)
-        if Cards in self.card:
-            print(Cards)
-        elif self.computer:
-            # self.card = hiddencard.pop()
-            print(self.card[1])
+        if self.computer:
+            print(self.card[0])
             print("hidden")
+        else:
+            for Cards in self.card:
+                print(Cards)
+        # elif self.computer:
+        #     # self.card = hiddencard.pop()
+        #     print(self.card[0])
+        #     print("hidden")
+        # elif self.player:
+        #     print(self.card[0])
+        #     print(self.card[0])
         # else:
         #     for Cards in self.card:
         #         print(Cards)
@@ -75,11 +83,11 @@ class Rungame:
     def __init__(self):
         pass
     def play(self):
-        # playing = True
-        # while playing:
+        playing = True
+        while playing:
             self.deck = Deck()
             self.deck.shuffle()
-            self.player_hand = Hand()
+            self.player_hand = Hand(player=True)
             self.computer_hand = Hand(computer=True)
             for i in range(2):
                 self.player_hand.add(self.deck.deal())
@@ -95,16 +103,21 @@ class Rungame:
                 self.player_hand.display()
                 if self.playerOver():
                     print("Computer wins")
+                elif self.computerOver():
+                    print("Player wins")
             else:
                 player_hand_value = self.player_hand.get_value()
                 computer_hand_value = self.computer_hand.get_value()
 
     def playerOver(self):
-        return self.player_hand.get_value > 21
+        return self.player_hand.get_value() > 21 or (21-self.player_hand.get_value()) < (21-self.computer_hand.get_value())
+    def computerOver(self):
+        return self.computer_hand.get_value() > 21 or (21-self.player_hand.get_value()) > (21-self.computer_hand.get_value())
 
 
 
 if __name__ == "__main__":
     game = Rungame()
     game.play()
+
             
