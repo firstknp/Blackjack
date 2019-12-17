@@ -1,0 +1,12 @@
+How to play game
+
+1. When you select game1, Blackjack, from main menu in main.py
+2. Game1.py will run automatically
+3. Program shows what card in your hand and also in computer hand are, by hiding another card of computer first
+4. There is menu which asks you to choose between hit or stick by:
+   - Hit: random another card from pile
+   - Sticks: put all of your cards to battle with computer
+5. The program will calculate the total value of your cards
+6. If your value less than computer or not get close to Blackjack, 21, you will gets lost
+7. Conversely, you will be a winner if your value more than computer or close to 21
+8. Game finished, turn back to main menu
