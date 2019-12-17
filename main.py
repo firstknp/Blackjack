@@ -1,4 +1,5 @@
 from game1 import *
+from game2 import *
 from game3 import *
 
 import sys
@@ -25,11 +26,8 @@ elif menu == 'player':
         if selection == 1:         
             game = Rungame()
             game.play()
-        # elif selection == 4:
-        #     game1_price = 20
-        #     game2_price = 10
-        #     game3_price = 15
-        #     print(f"{name}: Balance = ")
+        elif selection == 2:
+            start_colorLine(name)
         elif selection == 3:
             game = Game()
             game.play()
